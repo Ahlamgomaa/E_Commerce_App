@@ -83,6 +83,6 @@ Offline support is handled by:
 ## 👩‍💻 Author
 Developed by **Ahlam Gomaa Snosy**  
 📧 Email: ahlamgomaa304@gmail.com 
-🔗 GitHub: [your-username](https://github.com/AhlamGomaa)
+🔗 GitHub: [AhlamGomaa](https://github.com/Ahlamgomaa)
 
 
