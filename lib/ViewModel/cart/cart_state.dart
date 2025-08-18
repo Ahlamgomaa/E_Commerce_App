@@ -25,3 +25,4 @@ class CartError extends CartState {
   @override
   List<Object?> get props => [message];
 }
+

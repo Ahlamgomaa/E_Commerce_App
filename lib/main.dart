@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:e_commerce_app/data/product_repository.dart';
-import 'package:e_commerce_app/blocs/product/product_bloc.dart';
-import 'package:e_commerce_app/blocs/cart/cart_bloc.dart';
+import 'package:e_commerce_app/ViewModel/product/product_bloc.dart';
+import 'package:e_commerce_app/ViewModel/cart/cart_bloc.dart';
 import 'package:e_commerce_app/models/cart_item.dart';
-import 'package:e_commerce_app/screens/product_list_screen.dart';
-import 'package:e_commerce_app/screens/cart_screen.dart';
-import 'package:e_commerce_app/blocs/theme_cubit.dart';
+import 'package:e_commerce_app/views/product_list_screen.dart';
+import 'package:e_commerce_app/views/cart_screen.dart';
+import 'package:e_commerce_app/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (_) => CartBloc(cartBox: cartBox)..add(LoadCart()),
           ),
-          BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => ThemeApp()),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeMode>(
+        child: BlocBuilder<ThemeApp, ThemeMode>(
           builder: (context, themeMode) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,

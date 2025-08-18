@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/blocs/cart/cart_bloc.dart';
+import 'package:e_commerce_app/ViewModel/cart/cart_bloc.dart';
 import 'package:e_commerce_app/models/cart_item.dart';
 import 'package:e_commerce_app/models/product.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +13,7 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          product.title,
-          // maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          "Product Detail",
         ),
       ),
       body: SingleChildScrollView(
@@ -69,3 +67,4 @@ class ProductDetailScreen extends StatelessWidget {
     );
   }
 }
+

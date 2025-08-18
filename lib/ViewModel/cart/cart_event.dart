@@ -29,3 +29,4 @@ class UpdateQuantity extends CartEvent {
   @override
   List<Object?> get props => [productId, quantity];
 }
+

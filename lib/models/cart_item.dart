@@ -42,3 +42,4 @@ class CartItem extends HiveObject with EquatableMixin {
   @override
   List<Object?> get props => [productId, title, imageUrl, price, quantity];
 }
+
