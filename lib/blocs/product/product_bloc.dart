@@ -21,7 +21,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       }
     });
 
-    EventTransformer<T> _debounce<T>(Duration duration) {
+    EventTransformer<T> debounce<T>(Duration duration) {
       return (events, mapper) =>
           events.debounceTime(duration).switchMap(mapper);
     }
@@ -40,7 +40,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         }).toList();
         emit(current.copyWith(filtered: filtered, query: event.query));
       }
-    }, transformer: _debounce(const Duration(milliseconds: 350)));
+    }, transformer: debounce(const Duration(milliseconds: 350)));
 
     on<FilterByCategory>((event, emit) {
       final current = state;
