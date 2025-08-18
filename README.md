@@ -82,7 +82,7 @@ Offline support is handled by:
 
 ## 👩‍💻 Author
 Developed by **Ahlam Gomaa Snosy**  
-📧 Email: your-email@example.com  
-🔗 GitHub: [your-username](https://github.com/your-username)
+📧 Email: ahlamgomaa304@gmail.com 
+🔗 GitHub: [your-username](https://github.com/AhlamGomaa)
 
 
