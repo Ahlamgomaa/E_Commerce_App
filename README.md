@@ -2,18 +2,17 @@
 
 # 🛍️ E-Commerce Flutter App
 
-This is a simple **E-Commerce Flutter Application** built with **MVVM architecture** and **Cubit state management**.  
-It demonstrates fetching products from an API, displaying them in a clean UI, and handling offline support using local caching.
+This is a simple **E-Commerce Flutter Application** built with **MVVM architecture** and **Bloc state management**.  
+It demonstrates fetching products from an API, displaying them in a clean UI, and handling offline support.
 
 ---
 
 ## 📱 Features
-- Fetch products from API (using Dio / HTTP).
+- Fetch products from API (using HTTP).
 - Display products in a grid with image, title, and price.
 - MVVM architecture (Model - View - ViewModel).
 - Offline support using Hive (cache data locally).
 - State management using ** Bloc**.
-- Responsive design for both Android & iOS.
 
 ---
 
@@ -34,7 +33,7 @@ lib/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/ecommerce_flutter.git
+git clone https://github.com/Ahlamgomaa/ecommerce_flutter.git
 cd ecommerce_flutter
 ```
 
@@ -68,7 +67,7 @@ build/app/outputs/flutter-apk/app-release.apk
 ---
 
 ## 📖 Architecture Explanation
-We used **MVVM with Cubit**:
+We used **MVVM with Bloc**:
 - **Model** → Represents the data (e.g., Product model).
 - **View** → Flutter UI widgets.
 - **ViewModel (Cubit)** → Manages state and business logic.
@@ -83,6 +82,6 @@ Offline support is handled by:
 ## 👩‍💻 Author
 Developed by **Ahlam Gomaa Snosy**  
 📧 Email: ahlamgomaa304@gmail.com 
-🔗 GitHub: [AhlamGomaa](https://github.com/Ahlamgomaa)
+🔗 GitHub: [Ahlamgomaa](https://github.com/Ahlamgomaa)
 
 
