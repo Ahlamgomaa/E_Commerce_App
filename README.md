@@ -20,7 +20,7 @@ It demonstrates fetching products from an API, displaying them in a clean UI, an
 ```
 lib/
  ┣ 📂 models/        # Data models (e.g., ProductModel)
- ┣ 📂 services/      # API & Local DB services (Dio/HTTP + Hive/SQLite)
+ ┣ 📂 services/      # API & Local DB services (HTTP + Hive)
  ┣ 📂 viewmodels/    # Cubits (Business logic)
  ┣ 📂 views/         # UI screens (Home, Product Details, Cart...)
  ┣ 📂 widgets/       # Reusable UI components
