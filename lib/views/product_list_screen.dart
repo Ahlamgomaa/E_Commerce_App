@@ -1,7 +1,10 @@
-import 'package:e_commerce_app/ViewModel/product/product_bloc.dart';
-import 'package:e_commerce_app/custom_widget/product_title.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:e_commerce_app/custom_widget/icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:e_commerce_app/ViewModel/product/product_bloc.dart';
+import 'package:e_commerce_app/custom_widget/product_title.dart';
 import 'package:e_commerce_app/theme.dart';
 
 class ProductListScreen extends StatelessWidget {
@@ -14,13 +17,17 @@ class ProductListScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Products'),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.brightness_6_outlined),
-              onPressed: () => context.read<ThemeApp>().toggleTheme(),
+            IconButtonApp(
+              icon: Icon(Icons.brightness_6_outlined),
+              onPressed: () {
+                context.read<ThemeApp>().toggleTheme();
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () => Navigator.pushNamed(context, '/cart'),
+            IconButtonApp(
+              icon: Icon(Icons.shopping_cart_outlined),
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              },
             ),
           ],
         ),
@@ -30,7 +37,42 @@ class ProductListScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (state is ProductError) {
-              return Center(child: Text(state.message));
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.error_outline,
+                        size: 64,
+                        color: Colors.red[300],
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Error Loading Products',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        state.message,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                        onPressed: () =>
+                            context.read<ProductBloc>().add(LoadProducts()),
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Retry'),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             }
             if (state is ProductLoaded) {
               final categories = [
@@ -56,6 +98,7 @@ class ProductListScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
+                      //cat
                       height: 44,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
@@ -97,4 +140,6 @@ class ProductListScreen extends StatelessWidget {
     );
   }
 }
+
+
 

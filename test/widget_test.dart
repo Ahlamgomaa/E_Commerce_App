@@ -12,11 +12,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 
 import 'package:e_commerce_app/main.dart';
-import 'package:e_commerce_app/models/cart_item.dart';
-import 'package:e_commerce_app/models/product.dart';
-import 'package:e_commerce_app/data/product_repository.dart';
+import 'package:e_commerce_app/models/cart_item_model.dart';
+import 'package:e_commerce_app/models/product_model.dart';
+import 'package:e_commerce_app/data/product_servicesdart';
 
-class _FakeRepo extends ProductRepository {
+class _FakeRepo extends ProductServices {
   _FakeRepo() : super();
   @override
   Future<List<Product>> fetchProducts() async {
@@ -27,6 +27,7 @@ class _FakeRepo extends ProductRepository {
         description: 'desc',
         imageUrl: 'https://via.placeholder.com/150',
         price: 10.0,
+        category: 'All'
       )
     ];
   }
@@ -41,7 +42,7 @@ void main() {
     }
     final cartBox = await Hive.openBox<CartItem>('cartBox');
 
-    await tester.pumpWidget(MyApp(cartBox: cartBox, productRepository: _FakeRepo()));
+    await tester.pumpWidget(MyApp(cartBox: cartBox, productServices: _FakeRepo()));
     await tester.pump();
 
     expect(find.text('Products'), findsOneWidget);

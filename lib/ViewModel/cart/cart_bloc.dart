@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:e_commerce_app/models/cart_item.dart';
+import 'package:e_commerce_app/models/cart_item_model.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

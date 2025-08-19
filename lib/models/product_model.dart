@@ -14,7 +14,7 @@ class Product extends Equatable {
     required this.description,
     required this.imageUrl,
     required this.price,
-    this.category = '',
+    required this.category,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {

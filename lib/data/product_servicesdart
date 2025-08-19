@@ -1,0 +1,99 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:async';
+import 'package:e_commerce_app/models/product_model.dart';
+import 'package:http/http.dart' ;
+
+class ProductServices {
+  final Client httpClient;
+  static const int _timeoutSeconds = 60;
+  static const String _baseUrl = 'https://fakestoreapi.com';
+
+  ProductServices({Client? httpClient})
+    : httpClient = httpClient ?? Client(); //DI
+
+  Map<String, String> _getHeaders() {
+    return {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'User-Agent': 'E-Commerce-App/1.0',
+    };
+  }
+
+
+  Future<List<Product>> fetchProducts() async {
+    try {
+      final uri = Uri.parse('$_baseUrl/products');
+      final headers = _getHeaders();
+
+      final resp = await httpClient
+          .get(uri, headers: headers)
+          .timeout(Duration(seconds: _timeoutSeconds));
+
+      if (resp.statusCode != 200) {
+        throw Exception('Failed to load products (code: ${resp.statusCode})');
+      }
+
+      final list = jsonDecode(resp.body) as List<dynamic>;
+      return list
+          .map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on SocketException {
+      throw Exception(
+        'No internet connection. Please check your network and try again.',
+      );
+    } on TimeoutException {
+      throw Exception(
+        'Request timeout. Please check your connection and try again.',
+      );
+    } catch (e) {
+      if (e.toString().contains('Failed host lookup')) {
+        throw Exception(
+          'Unable to reach the server. Please check your internet connection.',
+        );
+      } else if (e.toString().contains('HandshakeException')) {
+        throw Exception(
+          'SSL connection failed. Please check your network settings.',
+        ); //http
+      }
+      rethrow;
+    }
+  }
+
+  Future<Product> fetchProduct(int id) async {
+    try {
+      final uri = Uri.parse('$_baseUrl/products/$id');
+      final headers = _getHeaders();
+
+      final resp = await httpClient
+          .get(uri, headers: headers)
+          .timeout(Duration(seconds: _timeoutSeconds));
+
+      if (resp.statusCode != 200) {
+        throw Exception('Failed to load product (code: ${resp.statusCode})');
+      }
+
+      final map = jsonDecode(resp.body) as Map<String, dynamic>;
+      return Product.fromJson(map);
+    } on SocketException {
+      throw Exception(
+        'No internet connection. Please check your network and try again.',
+      );
+    } on TimeoutException {
+      throw Exception(
+        'Request timeout. Please check your connection and try again.',
+      );
+    } catch (e) {
+      if (e.toString().contains('Failed host lookup')) {
+        throw Exception(
+          'Unable to reach the server. Please check your internet connection.',
+        );
+      } else if (e.toString().contains('HandshakeException')) {
+        throw Exception(
+          'SSL connection failed. Please check your network settings.',
+        ); //http
+      }
+      rethrow;
+    }
+  }
+}
