@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/ViewModel/cart/cart_bloc.dart';
-import 'package:e_commerce_app/custom_widget/icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,7 +62,7 @@ class CartScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              IconButtonApp(
+                              IconButton(
                                 icon: Icon(Icons.delete_outline),
                                 onPressed: () {
                                   context.read<CartBloc>().add(

@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:e_commerce_app/custom_widget/icon_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,13 +16,13 @@ class ProductListScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Products'),
           actions: [
-            IconButtonApp(
+            IconButton(
               icon: Icon(Icons.brightness_6_outlined),
               onPressed: () {
                 context.read<ThemeApp>().toggleTheme();
               },
             ),
-            IconButtonApp(
+            IconButton(
               icon: Icon(Icons.shopping_cart_outlined),
               onPressed: () {
                 Navigator.pushNamed(context, '/cart');
